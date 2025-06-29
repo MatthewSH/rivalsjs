@@ -1,8 +1,11 @@
+import type { Client } from "index";
 import { fromPromise, type Result } from "neverthrow";
-import type { HealthCheckResponse } from "types/v1";
+import type { BattlepassResponse, HealthCheckResponse } from "types/v1";
 import { routes } from "v1";
-import { transformHealthCheckResponse } from "v1/transformers";
-import type { Client } from "../../";
+import {
+  transformBattlepassResponse,
+  transformHealthCheckResponse,
+} from "v1/transformers";
 
 /**
  * API health check.
@@ -31,15 +34,15 @@ export async function getHealthCheck(
  * @param {?number} [season] Defaults to the current season if not provided.
  * @returns {Promise<Result<BattlepassResponse, Error>>}
  */
-// export async function getBattlepass(
-//   client: Client,
-//   season?: number,
-// ): Promise<Result<BattlepassResponse, Error>> {
-//   return fromPromise(
-//     client.get(routes.battlepass(season)).json<APIBattlepassResponse>(),
-//     (error) => new Error(error as string),
-//   ).andThen((response) => ok(transformBattlepassResponse(response)));
-// }
+export async function getBattlepass(
+  client: Client,
+  season?: number,
+): Promise<Result<BattlepassResponse, Error>> {
+  return fromPromise(
+    client.get(routes.battlepass(season)),
+    (error) => new Error(error as string),
+  ).map((response) => transformBattlepassResponse(response.data));
+}
 
-// export * from "./achievements";
-// export * from "./player";
+export * from "./achievements";
+export * from "./player";

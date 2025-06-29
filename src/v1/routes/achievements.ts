@@ -1,34 +1,26 @@
-// import { fromPromise, ok, type Result } from "neverthrow";
-// import type { Client } from "@/index";
-// import type {
-//   AllAchievementsResponse,
-//   APIAllAchievementsResponse,
-// } from "@/types/v1";
-// import { routes } from "..";
-// import { transformAllAchievementsResponse } from "../transformers";
+import type { Client } from "index";
+import { fromPromise, type Result } from "neverthrow";
+import type { AllAchievementsResponse } from "types/v1";
+import { routes } from "v1";
+import { transformAllAchievementsResponse } from "v1/transformers";
 
-// export async function getAllAchievements(
-//   client: Client,
-//   page = 1,
-//   perPage = 10,
-// ): Promise<Result<AllAchievementsResponse, Error>> {
-//   return fromPromise(
-//     client
-//       .get(routes.allAchievements(page, perPage))
-//       // .error(429, () => {
-//       //   throw new Error("Rate limit exceeded. Please try again later.");
-//       // })
-//       .res((response) => {
-//         console.log(
-//           response.headers.get("x-ratelimit-remaining") +
-//             " " +
-//             response.headers.get("x-ratelimit-reset"),
-//         );
-
-//         console.log("Status code: ", response.status);
-//         return response.json();
-//       }),
-//     // .json<APIAllAchievementsResponse>(),
-//     (error) => new Error(error as string),
-//   ).andThen((response) => ok(transformAllAchievementsResponse(response)));
-// }
+/**
+ * Retrieves a list of achievements. You can apply pagination.
+ *
+ * @export
+ * @async
+ * @param {Client} client
+ * @param {number} [page=1]
+ * @param {number} [perPage=10]
+ * @returns {{Promise<Result<AllAchievementsResponse, Error>>}}
+ */
+export async function getAllAchievements(
+  client: Client,
+  page: number = 1,
+  perPage: number = 10,
+): Promise<Result<AllAchievementsResponse, Error>> {
+  return fromPromise(
+    client.get(routes.allAchievements(page, perPage)),
+    (error) => new Error(error as string),
+  ).map((response) => transformAllAchievementsResponse(response.data));
+}

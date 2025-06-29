@@ -1,21 +1,16 @@
-// import type {
-//   AllAchievementsResponse,
-//   APIAllAchievementsResponse,
-// } from "@/types/v1";
-// import { camelJson, convertToAssetUrl } from "@/utils";
+import type { AllAchievementsResponse } from "types/v1";
+import { convertToAssetUrl } from "utils";
 
-// export function transformAllAchievementsResponse(
-//   response: any,
-// ): AllAchievementsResponse {
-//   const res = camelJson<AllAchievementsResponse>(response);
+export function transformAllAchievementsResponse(
+  response: AllAchievementsResponse,
+): AllAchievementsResponse {
+  const cleanedResponse = {
+    ...response,
+    achievements: response.achievements.map((achievement) => ({
+      ...achievement,
+      icon: convertToAssetUrl(achievement.icon),
+    })),
+  };
 
-//   const cleanedResponse = {
-//     ...res,
-//     achievements: res.achievements.map((achievement) => ({
-//       ...achievement,
-//       icon: convertToAssetUrl(achievement.icon),
-//     })),
-//   };
-
-//   return cleanedResponse;
-// }
+  return cleanedResponse;
+}
