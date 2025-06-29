@@ -1,7 +1,8 @@
-import type { HealthCheckResponse } from "@/types/v1";
+import type { APIHealthCheckResponse, HealthCheckResponse } from "@/types/v1";
+import { camelJson } from "@/utils";
 
 export function transformHealthCheckResponse(
-  response: HealthCheckResponse,
+  response: APIHealthCheckResponse,
 ): HealthCheckResponse {
-  return response;
+  return camelJson<HealthCheckResponse>(response);
 }

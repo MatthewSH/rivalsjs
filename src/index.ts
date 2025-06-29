@@ -1,4 +1,3 @@
-import camelcaseKeys from "camelcase-keys";
 import wretch from "wretch";
 import addonQS from "wretch/addons/querystring";
 import { BASE_API_URL } from "@/constants";
@@ -23,5 +22,4 @@ function buildWretchClient(apiKey: string) {
       "Content-Type": "application/json",
     })
     .addon(addonQS);
-  // .resolve((_) => _.json((data) => camelcaseKeys(data, { deep: true })));
 }
