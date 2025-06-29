@@ -1,5 +1,4 @@
 import wretch from "wretch";
-import addonQS from "wretch/addons/querystring";
 import { BASE_API_URL } from "@/constants";
 import type { ClientConfig } from "@/types";
 
@@ -16,10 +15,8 @@ export function createRivalsClient(config: ClientConfig): Client {
 }
 
 function buildWretchClient(apiKey: string) {
-  return wretch(BASE_API_URL)
-    .headers({
-      "X-API-Key": apiKey,
-      "Content-Type": "application/json",
-    })
-    .addon(addonQS);
+  return wretch(BASE_API_URL).headers({
+    "X-API-Key": apiKey,
+    "Content-Type": "application/json",
+  });
 }
