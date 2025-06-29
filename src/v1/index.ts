@@ -1,3 +1,4 @@
+import { all } from "axios";
 import { buildQueryString } from "../utils";
 
 export const routes = {
@@ -28,6 +29,15 @@ export const routes = {
     }
 
     return `/v1/achievement/${encodeURIComponent(name)}`;
+  },
+
+  allMaps(page = 1, perPage = 10) {
+    const url = "/v1/maps";
+
+    return buildQueryString(url, {
+      page: page > 0 ? page : 1,
+      limit: perPage > 0 ? perPage : 10,
+    });
   },
 };
 

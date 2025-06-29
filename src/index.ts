@@ -32,6 +32,21 @@ function buildAxios(apiKey: string) {
     },
   });
 
+  client.interceptors.request.use(
+    (config) => {
+      logger.debug(
+        "Requesting %s %s",
+        config.method?.toUpperCase(),
+        config.url,
+      );
+      return config;
+    },
+    (error) => {
+      logger.error("Request error:", error);
+      return Promise.reject(error);
+    },
+  );
+
   client.interceptors.response.use(
     (response) => {
       const cleanedData = camelcaseKeys(response.data, { deep: true });

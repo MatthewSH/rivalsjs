@@ -1,13 +1,18 @@
-import { BASE_ASSET_URL } from "./constants";
+import { BASE_ASSET_PREMIUM_URL, BASE_ASSET_URL } from "./constants";
 
 export function convertToAssetUrl(input: string): string {
-  const parts: string[] = input.split("/");
+  let parts: string[] = input.split("/");
+  parts = parts.filter((part) => part !== "");
+
+  if (parts.at(0) === "premium") {
+    return `${BASE_ASSET_PREMIUM_URL}/${parts.join("/")}`;
+  }
 
   if (parts.at(0) === "rivals") {
     parts.shift();
   }
 
-  return `${BASE_ASSET_URL}${parts.join("/")}`;
+  return `${BASE_ASSET_URL}/${parts.join("/")}`;
 }
 
 export function buildQueryString(
