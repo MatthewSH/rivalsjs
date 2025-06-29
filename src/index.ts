@@ -27,6 +27,7 @@ function buildAxios(apiKey: string) {
     headers: {
       "X-API-Key": apiKey,
       "Content-Type": "application/json",
+      Accept: "application/json",
       "User-Agent": `RivalsJS/${version}`,
     },
   });

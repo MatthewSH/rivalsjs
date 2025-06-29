@@ -6,11 +6,13 @@
 // } from "@/types/v1";
 // import { camelJson, convertToAssetUrl } from "@/utils";
 
-// export function transformHealthCheckResponse(
-//   response: APIHealthCheckResponse,
-// ): HealthCheckResponse {
-//   return camelJson<HealthCheckResponse>(response);
-// }
+import type { HealthCheckResponse } from "types/v1";
+
+export function transformHealthCheckResponse(
+  response: HealthCheckResponse,
+): HealthCheckResponse {
+  return response;
+}
 
 // export function transformBattlepassResponse(
 //   response: APIBattlepassResponse,
