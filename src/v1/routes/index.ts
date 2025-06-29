@@ -1,4 +1,4 @@
-import { err, fromPromise, ok, type Result } from "neverthrow";
+import { fromPromise, ok, type Result } from "neverthrow";
 import type { Client } from "@/index";
 import type { APIHealthCheckResponse, HealthCheckResponse } from "@/types/v1";
 import { routes } from "@/v1";
