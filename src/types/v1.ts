@@ -17,14 +17,18 @@ export type BattlepassResponse = {
   }[];
 };
 
+type AchievementItem = {
+  name: string;
+  mission: string;
+  points: string;
+  icon: string;
+  rarity: string;
+  category: string;
+};
+
 export type AllAchievementsResponse = {
   totalAchievements: number;
-  achievements: {
-    name: string;
-    mission: string;
-    points: string;
-    icon: string;
-    rarity: string;
-    category: string;
-  }[];
+  achievements: AchievementItem[];
 };
+
+export type AchievementResponse = AchievementItem;

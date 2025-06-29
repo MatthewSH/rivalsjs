@@ -21,6 +21,14 @@ export const routes = {
       perPage: perPage > 0 ? perPage : 10,
     });
   },
+
+  achievement(name: string) {
+    if (!name) {
+      throw new Error("Achievement name is required");
+    }
+
+    return `/v1/achievement/${encodeURIComponent(name)}`;
+  },
 };
 
 export * from "./routes";

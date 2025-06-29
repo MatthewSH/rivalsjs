@@ -1,4 +1,4 @@
-import type { AllAchievementsResponse } from "types/v1";
+import type { AchievementResponse, AllAchievementsResponse } from "types/v1";
 import { convertToAssetUrl } from "utils";
 
 export function transformAllAchievementsResponse(
@@ -13,4 +13,13 @@ export function transformAllAchievementsResponse(
   };
 
   return cleanedResponse;
+}
+
+export function transformAchievementResponse(
+  response: AchievementResponse,
+): AchievementResponse {
+  return {
+    ...response,
+    icon: convertToAssetUrl(response.icon),
+  };
 }
