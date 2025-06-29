@@ -18,14 +18,13 @@ import {
  * @export
  * @async
  * @param {Client} client
- * @returns {Promise<Result<HealthCheckResponse, Error>>}
+ * @returns {Promise<Result<HealthCheckResponse, string>>}
  */
 export async function getHealthCheck(
   client: Client,
-): Promise<Result<HealthCheckResponse, Error>> {
-  return fromPromise(
-    client.get(routes.healthCheck()),
-    (error) => new Error(error as string),
+): Promise<Result<HealthCheckResponse, string>> {
+  return fromPromise(client.get(routes.healthCheck()), (error) =>
+    String(error),
   ).map((response) => transformHealthCheckResponse(response.data));
 }
 
@@ -37,15 +36,14 @@ export async function getHealthCheck(
  * @async
  * @param {Client} client
  * @param {?number} [season] Defaults to the current season if not provided.
- * @returns {Promise<Result<BattlepassResponse, Error>>}
+ * @returns {Promise<Result<BattlepassResponse, string>>}
  */
 export async function getBattlepass(
   client: Client,
   season?: number,
-): Promise<Result<BattlepassResponse, Error>> {
-  return fromPromise(
-    client.get(routes.battlepass(season)),
-    (error) => new Error(error as string),
+): Promise<Result<BattlepassResponse, string>> {
+  return fromPromise(client.get(routes.battlepass(season)), (error) =>
+    String(error),
   ).map((response) => transformBattlepassResponse(response.data));
 }
 
@@ -57,16 +55,15 @@ export async function getBattlepass(
  * @param {Client} client
  * @param {number} [page=1]
  * @param {number} [perPage=10]
- * @returns {Promise<Result<AllMapsResponse, Error>>}
+ * @returns {Promise<Result<AllMapsResponse, string>>}
  */
 export async function getAllMaps(
   client: Client,
   page: number = 1,
   perPage: number = 10,
-): Promise<Result<AllMapsResponse, Error>> {
-  return fromPromise(
-    client.get(routes.allMaps(page, perPage)),
-    (error) => new Error(error as string),
+): Promise<Result<AllMapsResponse, string>> {
+  return fromPromise(client.get(routes.allMaps(page, perPage)), (error) =>
+    String(error),
   ).map((response) => transformAllMapsResponse(response.data));
 }
 

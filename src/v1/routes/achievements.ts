@@ -15,16 +15,16 @@ import {
  * @param {Client} client
  * @param {number} [page=1]
  * @param {number} [perPage=10]
- * @returns {{Promise<Result<AllAchievementsResponse, Error>>}}
+ * @returns {{Promise<Result<AllAchievementsResponse, string>>}}
  */
 export async function getAllAchievements(
   client: Client,
   page: number = 1,
   perPage: number = 10,
-): Promise<Result<AllAchievementsResponse, Error>> {
+): Promise<Result<AllAchievementsResponse, string>> {
   return fromPromise(
     client.get(routes.allAchievements(page, perPage)),
-    (error) => new Error(error as string),
+    (error) => String(error),
   ).map((response) => transformAllAchievementsResponse(response.data));
 }
 
@@ -35,14 +35,13 @@ export async function getAllAchievements(
  * @async
  * @param {Client} client
  * @param {string} name
- * @returns {Promise<Result<AchievementResponse, Error>>}
+ * @returns {Promise<Result<AchievementResponse, string>>}
  */
 export async function getAchievement(
   client: Client,
   name: string,
-): Promise<Result<AchievementResponse, Error>> {
-  return fromPromise(
-    client.get(routes.achievement(name)),
-    (error) => new Error(error as string),
+): Promise<Result<AchievementResponse, string>> {
+  return fromPromise(client.get(routes.achievement(name)), (error) =>
+    String(error),
   ).map((response) => transformAchievementResponse(response.data));
 }
