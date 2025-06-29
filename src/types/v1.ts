@@ -1,16 +1,14 @@
-import type { KeysToCamelCase } from ".";
-
-export interface APIHealthCheckResponse {
+export type HealthCheckResponse = {
   error: boolean;
   message: string;
   status: number;
-  server_time: string;
-  server_response_time: string;
-}
+  serverTime: string;
+  serverResponseTime: string;
+};
 
-export type APIBattlepassResponse = {
+export type BattlepassResponse = {
   season: number;
-  season_name: string;
+  seasonName: string;
   items: {
     name: string;
     image: string;
@@ -19,5 +17,14 @@ export type APIBattlepassResponse = {
   }[];
 };
 
-export type HealthCheckResponse = KeysToCamelCase<APIHealthCheckResponse>;
-export type BattlepassResponse = KeysToCamelCase<APIBattlepassResponse>;
+export type AllAchievementsResponse = {
+  totalAchievements: number;
+  achievements: {
+    name: string;
+    mission: string;
+    points: string;
+    icon: string;
+    rarity: string;
+    category: string;
+  }[];
+};
