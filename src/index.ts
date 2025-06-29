@@ -18,5 +18,6 @@ function buildWretchClient(apiKey: string) {
   return wretch(BASE_API_URL).headers({
     "X-API-Key": apiKey,
     "Content-Type": "application/json",
+    "User-Agent": `RivalsJS/${process.env.__PACKAGE_VERSION__ ?? "dev"}`,
   });
 }
