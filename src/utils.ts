@@ -7,7 +7,7 @@ export function convertToAssetUrl(input: string): string {
     parts.shift();
   }
 
-  return `${BASE_ASSET_URL}/${parts.join("/")}`;
+  return `${BASE_ASSET_URL}${parts.join("/")}`;
 }
 
 export function buildQueryString(
