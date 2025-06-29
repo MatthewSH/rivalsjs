@@ -2,6 +2,7 @@ import axios from "axios";
 import axiosRetry from "axios-retry";
 import camelcaseKeys from "camelcase-keys";
 import { BASE_API_URL } from "./constants";
+import { logger } from "./logger";
 import type { ClientConfig } from "./types";
 
 export type Client = ReturnType<typeof buildAxios>;
@@ -17,12 +18,16 @@ export function createRivalsClient(config: ClientConfig): Client {
 }
 
 function buildAxios(apiKey: string) {
+  const version = process.env.__PACKAGE_VERSION__ ?? "dev";
+
+  logger.debug("Using RivalsJS version %s", version);
+
   const client = axios.create({
     baseURL: BASE_API_URL,
     headers: {
       "X-API-Key": apiKey,
       "Content-Type": "application/json",
-      "User-Agent": `RivalsJS/${process.env.__PACKAGE_VERSION__ ?? "dev"}`,
+      "User-Agent": `RivalsJS/${version}`,
     },
   });
 
@@ -52,7 +57,7 @@ function buildAxios(apiKey: string) {
       if (error.response?.status === 429 && resetHeader) {
         const resetTimestamp = parseInt(resetHeader, 10) * 1000;
         const delay = Math.max(0, resetTimestamp - Date.now());
-        console.warn(`RivalsJS: Rate limit hit. Retrying after ${delay}ms...`);
+        logger.debug("Rate limit exceeded, retrying after %d ms", delay);
         return delay;
       }
 
