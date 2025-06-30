@@ -2,3 +2,6 @@ node_modules/
 .env
 dist/
 test.ts
+docs/api/
+docs/.vitepress/dist/
+docs/.vitepress/cache/

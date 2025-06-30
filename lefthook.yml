@@ -2,7 +2,7 @@ pre-commit:
   parallel: true
   commands:
     check-and-lint:
-      glob: "**/*.{ts,md,json}"
+      glob: "**/*.{ts,json}"
       run: pnpm biome check --write {staged_files}
       stage_fixed: true
 
