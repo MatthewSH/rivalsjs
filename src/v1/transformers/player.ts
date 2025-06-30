@@ -1,10 +1,34 @@
-import type { FindPlayerResponse, GetPlayerResponse } from "types/v1";
+import type {
+  APIUpdatePlayerErrorResponse,
+  APIUpdatePlayerSuccessResponse,
+  FindPlayerResponse,
+  GetPlayerResponse,
+  UpdatePlayerResponse,
+} from "types/v1";
 import { convertToAssetUrl } from "utils";
 
 export function transformFindPlayerResponse(
   data: FindPlayerResponse,
 ): FindPlayerResponse {
   return data;
+}
+
+export function transformUpdatePlayerResponse(
+  data: APIUpdatePlayerSuccessResponse | APIUpdatePlayerErrorResponse,
+): UpdatePlayerResponse {
+  if ("error" in data) {
+    return {
+      success: false,
+      message: data.message,
+      status: data.status ?? 500,
+    };
+  }
+
+  return {
+    success: data.success,
+    message: data.message,
+    status: 200,
+  };
 }
 
 export function transformGetPlayerResponse(

@@ -56,6 +56,14 @@ export const routes = {
       season: season ?? undefined,
     });
   },
+
+  updatePlayer(player: string) {
+    if (!player) {
+      throw new Error("Player identifier is required");
+    }
+
+    return `/v1/player/${encodeURIComponent(player)}/update`;
+  },
 };
 
 export * from "./api";

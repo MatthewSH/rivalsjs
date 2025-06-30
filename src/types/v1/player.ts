@@ -3,6 +3,23 @@ export type FindPlayerResponse = {
   uid: string;
 };
 
+export type APIUpdatePlayerSuccessResponse = {
+  success: boolean;
+  message: string;
+};
+
+export type APIUpdatePlayerErrorResponse = {
+  error: boolean;
+  message: string;
+  status: number;
+};
+
+export type UpdatePlayerResponse = {
+  success: boolean;
+  message: string;
+  status: number;
+};
+
 type OverallStatsEntry = {
   totalMatches: number;
   totalWins: number;

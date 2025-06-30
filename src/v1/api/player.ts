@@ -1,10 +1,15 @@
 import type { Client } from "index";
 import { fromPromise, type Result } from "neverthrow";
-import type { FindPlayerResponse, GetPlayerResponse } from "types/v1";
+import type {
+  FindPlayerResponse,
+  GetPlayerResponse,
+  UpdatePlayerResponse,
+} from "types/v1";
 import { routes } from "v1";
 import {
   transformFindPlayerResponse,
   transformGetPlayerResponse,
+  transformUpdatePlayerResponse,
 } from "v1/transformers";
 
 /**
@@ -45,4 +50,26 @@ export async function getPlayer(
   return fromPromise(client.get(routes.getPlayer(player, season)), (error) =>
     String(error),
   ).map((response) => transformGetPlayerResponse(response.data));
+}
+
+/**
+ * Triggers an update of player data identified by the uid or username. It performs the necessary updates and returns a success or failure response.
+ *
+ * IMPORTANT
+ * The update player endpoint is a QUEUE & TIME & USER sensitive/locked endpoint at a set time of 30 minutes what this means is it can only be used every 30 minutes on 1 specific player.
+ * For more information, please refer to the [API documentation](https://docs.marvelrivalsapi.com/endpoints/player-stats/update-player).
+ *
+ * @export
+ * @async
+ * @param {Client} client
+ * @param {string} player
+ * @returns {Promise<Result<UpdatePlayerResponse, string>>}
+ */
+export async function updatePlayer(
+  client: Client,
+  player: string,
+): Promise<Result<UpdatePlayerResponse, string>> {
+  return fromPromise(client.get(routes.updatePlayer(player)), (error) =>
+    String(error),
+  ).map((response) => transformUpdatePlayerResponse(response.data));
 }
