@@ -2,8 +2,8 @@ import type { Client } from "index";
 import { fromPromise, type Result } from "neverthrow";
 import type {
   FindPlayerResponse,
-  GetPlayerResponse,
   PlayerMatchHistoryEntry,
+  PlayerResponse,
   UpdatePlayerResponse,
 } from "types/v1";
 import { routes } from "v1";
@@ -42,13 +42,13 @@ export async function searchPlayer(
  * @param {Client} client
  * @param {string} player This can be either a player uid or username.
  * @param {?number} [season]
- * @returns {Promise<Result<GetPlayerResponse, string>>}
+ * @returns {Promise<Result<PlayerResponse, string>>}
  */
 export async function getPlayer(
   client: Client,
   player: string,
   season?: number,
-): Promise<Result<GetPlayerResponse, string>> {
+): Promise<Result<PlayerResponse, string>> {
   return fromPromise(client.get(routes.player(player, season)), (error) =>
     String(error),
   ).map((response) => transformGetPlayerResponse(response.data));

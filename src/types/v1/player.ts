@@ -53,7 +53,7 @@ type PlayerHeroStatEntry = {
   };
 };
 
-export type GetPlayerResponse = {
+export type PlayerResponse = {
   uid: number;
   name: string;
   updates: {

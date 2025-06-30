@@ -2,8 +2,8 @@ import type {
   APIUpdatePlayerErrorResponse,
   APIUpdatePlayerSuccessResponse,
   FindPlayerResponse,
-  GetPlayerResponse,
   PlayerMatchHistoryEntry,
+  PlayerResponse,
   UpdatePlayerResponse,
 } from "types/v1";
 import { convertToAssetUrl } from "utils";
@@ -33,9 +33,9 @@ export function transformUpdatePlayerResponse(
 }
 
 export function transformGetPlayerResponse(
-  data: GetPlayerResponse,
-): GetPlayerResponse {
-  const transformedData: GetPlayerResponse = {
+  data: PlayerResponse,
+): PlayerResponse {
+  const transformedData: PlayerResponse = {
     ...data,
     player: {
       ...data.player,
