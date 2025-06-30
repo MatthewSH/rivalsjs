@@ -23,7 +23,7 @@ import {
  * @param {string} username
  * @returns {Promise<Result<FindPlayerResponse, string>>}
  */
-export async function findPlayer(
+export async function searchPlayer(
   client: Client,
   username: string,
 ): Promise<Result<FindPlayerResponse, string>> {
