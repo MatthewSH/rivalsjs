@@ -60,6 +60,7 @@ function buildAxios(config: ClientConfig) {
   // Dev shit
   client.interceptors.response.use(
     (response) => {
+      const rateLimitRemaining = response.headers["x-ratelimit-remaining"];
       logger.debug(
         "Received %d response from %s %s",
         response.status,
@@ -67,16 +68,13 @@ function buildAxios(config: ClientConfig) {
         response.config.url,
       );
 
-      logger.debug(
-        "Rate limit remaining: %s",
-        response.headers["x-ratelimit-remaining"],
-      );
+      logger.debug("Rate limit remaining: %s", rateLimitRemaining);
 
-      if (Number.isNaN(Number(response.headers["x-ratelimit-remaining"]))) {
-        logger.error(
-          "Invalid rate limit header: %s",
-          response.headers["x-ratelimit-remaining"],
-        );
+      if (
+        rateLimitRemaining !== "cache" &&
+        Number.isNaN(Number(rateLimitRemaining))
+      ) {
+        logger.error("Invalid rate limit header: %s", rateLimitRemaining);
 
         return Promise.reject("Invalid rate limit header");
       }
