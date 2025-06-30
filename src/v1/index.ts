@@ -39,7 +39,7 @@ export const routes = {
     });
   },
 
-  findPlayer(username: string) {
+  searchPlayer(username: string) {
     if (!username) {
       throw new Error("Username is required");
     }
@@ -47,7 +47,7 @@ export const routes = {
     return `/v1/find-player/${encodeURIComponent(username)}`;
   },
 
-  getPlayer(player: string, season?: number) {
+  player(player: string, season?: number) {
     if (!player) {
       throw new Error("Player identifier is required");
     }
@@ -84,6 +84,18 @@ export const routes = {
       game_mode: gameMode ?? undefined,
       timestamp: timestamp ?? undefined,
     });
+  },
+
+  allHeroes() {
+    return "/v1/heroes";
+  },
+
+  hero(name: string) {
+    return `/v1/heroes/hero/${encodeURIComponent(name)}`;
+  },
+
+  heroLeaderboard(name: string) {
+    return `/v1/heroes/leaderboard/${encodeURIComponent(name)}`;
   },
 };
 

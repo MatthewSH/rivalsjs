@@ -8,5 +8,6 @@ export type HealthCheckResponse = {
 
 export * from "./achievements";
 export * from "./battlepass";
+export * from "./heroes";
 export * from "./maps";
 export * from "./player";

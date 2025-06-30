@@ -27,7 +27,7 @@ export async function searchPlayer(
   client: Client,
   username: string,
 ): Promise<Result<FindPlayerResponse, string>> {
-  return fromPromise(client.get(routes.findPlayer(username)), (error) =>
+  return fromPromise(client.get(routes.searchPlayer(username)), (error) =>
     String(error),
   ).map((response) => transformFindPlayerResponse(response.data));
 }
@@ -49,7 +49,7 @@ export async function getPlayer(
   player: string,
   season?: number,
 ): Promise<Result<GetPlayerResponse, string>> {
-  return fromPromise(client.get(routes.getPlayer(player, season)), (error) =>
+  return fromPromise(client.get(routes.player(player, season)), (error) =>
     String(error),
   ).map((response) => transformGetPlayerResponse(response.data));
 }
