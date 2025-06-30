@@ -1,10 +1,10 @@
 import type { AllMapsResponse } from "types/v1";
 import { convertToAssetUrl } from "utils";
 
-export function transformAllMapsResponse(response: AllMapsResponse) {
-  const cleanedResponse = {
-    ...response,
-    maps: response.maps.map((map) => ({
+export function transformAllMapsResponse(data: AllMapsResponse) {
+  const transformedData = {
+    ...data,
+    maps: data.maps.map((map) => ({
       ...map,
       images: map.images.map((image) => convertToAssetUrl(image)),
       subMap: map.subMap
@@ -18,5 +18,5 @@ export function transformAllMapsResponse(response: AllMapsResponse) {
     })),
   };
 
-  return cleanedResponse;
+  return transformedData;
 }

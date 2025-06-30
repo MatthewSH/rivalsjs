@@ -1,9 +1,9 @@
 import type { HealthCheckResponse } from "types/v1";
 
 export function transformHealthCheckResponse(
-  response: HealthCheckResponse,
+  data: HealthCheckResponse,
 ): HealthCheckResponse {
-  return response;
+  return data;
 }
 
 export * from "./achievements";

@@ -2,18 +2,18 @@ import type { BattlepassResponse } from "types/v1";
 import { convertToAssetUrl } from "utils";
 
 export function transformBattlepassResponse(
-  response: BattlepassResponse,
+  data: BattlepassResponse,
 ): BattlepassResponse {
-  const cleanedResponse = {
-    ...response,
+  const transformedData = {
+    ...data,
   };
 
-  if (cleanedResponse.items.length > 0) {
-    cleanedResponse.items = cleanedResponse.items.map((item) => ({
+  if (transformedData.items.length > 0) {
+    transformedData.items = transformedData.items.map((item) => ({
       ...item,
       image: convertToAssetUrl(item.image),
     }));
   }
 
-  return cleanedResponse;
+  return transformedData;
 }

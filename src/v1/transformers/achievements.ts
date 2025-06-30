@@ -2,24 +2,24 @@ import type { AchievementResponse, AllAchievementsResponse } from "types/v1";
 import { convertToAssetUrl } from "utils";
 
 export function transformAllAchievementsResponse(
-  response: AllAchievementsResponse,
+  data: AllAchievementsResponse,
 ): AllAchievementsResponse {
-  const cleanedResponse = {
-    ...response,
-    achievements: response.achievements.map((achievement) => ({
+  const transformedData = {
+    ...data,
+    achievements: data.achievements.map((achievement) => ({
       ...achievement,
       icon: convertToAssetUrl(achievement.icon),
     })),
   };
 
-  return cleanedResponse;
+  return transformedData;
 }
 
 export function transformAchievementResponse(
-  response: AchievementResponse,
+  data: AchievementResponse,
 ): AchievementResponse {
   return {
-    ...response,
-    icon: convertToAssetUrl(response.icon),
+    ...data,
+    icon: convertToAssetUrl(data.icon),
   };
 }
