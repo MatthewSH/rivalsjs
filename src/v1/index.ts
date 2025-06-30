@@ -46,6 +46,16 @@ export const routes = {
 
     return `/v1/find-player/${encodeURIComponent(username)}`;
   },
+
+  getPlayer(player: string, season?: number) {
+    if (!player) {
+      throw new Error("Player identifier is required");
+    }
+
+    return buildQueryString(`/v1/player/${encodeURIComponent(player)}`, {
+      season: season ?? undefined,
+    });
+  },
 };
 
 export * from "./api";

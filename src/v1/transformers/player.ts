@@ -1,7 +1,56 @@
-import type { FindPlayerResponse } from "types/v1";
+import type { FindPlayerResponse, GetPlayerResponse } from "types/v1";
+import { convertToAssetUrl } from "utils";
 
 export function transformFindPlayerResponse(
-  response: FindPlayerResponse,
+  data: FindPlayerResponse,
 ): FindPlayerResponse {
-  return response;
+  return data;
+}
+
+export function transformGetPlayerResponse(
+  data: GetPlayerResponse,
+): GetPlayerResponse {
+  const transformedData: GetPlayerResponse = {
+    ...data,
+    player: {
+      ...data.player,
+      icon: {
+        ...data.player.icon,
+        playerIcon: convertToAssetUrl(data.player.icon.playerIcon),
+      },
+      rank: {
+        ...data.player.rank,
+        image: convertToAssetUrl(data.player.rank.image),
+      },
+    },
+    matchHistory: data.matchHistory.map((match) => ({
+      ...match,
+      mapThumbnail: convertToAssetUrl(match.mapThumbnail),
+      playerPerformance: {
+        ...match.playerPerformance,
+        heroType: convertToAssetUrl(match.playerPerformance.heroType),
+      },
+    })),
+    heroMatchups: data.heroMatchups.map((matchup) => ({
+      ...matchup,
+      heroThumbnail: convertToAssetUrl(matchup.heroThumbnail),
+    })),
+    teamMates: data.teamMates.map((teammate) => ({
+      ...teammate,
+    })),
+    heroesRanked: data.heroesRanked.map((hero) => ({
+      ...hero,
+      heroThumbnail: convertToAssetUrl(hero.heroThumbnail),
+    })),
+    heroesUnranked: data.heroesUnranked.map((hero) => ({
+      ...hero,
+      heroThumbnail: convertToAssetUrl(hero.heroThumbnail),
+    })),
+    maps: data.maps.map((map) => ({
+      ...map,
+      mapThumbnail: convertToAssetUrl(map.mapThumbnail),
+    })),
+  };
+
+  return transformedData;
 }
