@@ -183,3 +183,50 @@ export type GetPlayerResponse = {
     playTime: number;
   }[];
 };
+
+export type PlayerMatchHistoryEntry = {
+  matchMapId: number;
+  mapThumbnail: string;
+  matchPlayDuration: number;
+  matchSeason: number;
+  matchUid: string;
+  matchWinnerSide: number;
+  mvpUid: number;
+  svpUid: number;
+  scoreInfo: {
+    [key: string]: number;
+  };
+  matchTimeStamp: number;
+  playModeId: number;
+  gameModeId: number;
+  matchPlayer: {
+    assists: number;
+    kills: number;
+    deaths: number;
+    isWin: {
+      score: number;
+      isWin: boolean;
+    };
+    disconnected: boolean;
+    playerUid: number;
+    camp: number | null;
+    scoreInfo: {
+      addScore: number;
+      level: number;
+      newLevel: number;
+      newScore: number;
+    };
+    playerHero: {
+      heroId: number;
+      heroName: string;
+      heroType: string;
+      kills: number;
+      deaths: number;
+      assists: number;
+      playTime: number;
+      totalHeroDamage: number;
+      totalDamageTaken: number;
+      totalHeroHeal: number;
+    };
+  };
+};

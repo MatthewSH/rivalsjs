@@ -3,6 +3,7 @@ import type {
   APIUpdatePlayerSuccessResponse,
   FindPlayerResponse,
   GetPlayerResponse,
+  PlayerMatchHistoryEntry,
   UpdatePlayerResponse,
 } from "types/v1";
 import { convertToAssetUrl } from "utils";
@@ -77,4 +78,20 @@ export function transformGetPlayerResponse(
   };
 
   return transformedData;
+}
+
+export function transformPlayerMatchHistoryResponse(data: {
+  matchHistory: PlayerMatchHistoryEntry[];
+}): PlayerMatchHistoryEntry[] {
+  return data.matchHistory.map((entry) => ({
+    ...entry,
+    mapThumbnail: convertToAssetUrl(entry.mapThumbnail),
+    matchPlayer: {
+      ...entry.matchPlayer,
+      playerHero: {
+        ...entry.matchPlayer.playerHero,
+        heroType: convertToAssetUrl(entry.matchPlayer.playerHero.heroType),
+      },
+    },
+  }));
 }

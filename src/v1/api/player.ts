@@ -3,12 +3,14 @@ import { fromPromise, type Result } from "neverthrow";
 import type {
   FindPlayerResponse,
   GetPlayerResponse,
+  PlayerMatchHistoryEntry,
   UpdatePlayerResponse,
 } from "types/v1";
 import { routes } from "v1";
 import {
   transformFindPlayerResponse,
   transformGetPlayerResponse,
+  transformPlayerMatchHistoryResponse,
   transformUpdatePlayerResponse,
 } from "v1/transformers";
 
@@ -72,4 +74,33 @@ export async function updatePlayer(
   return fromPromise(client.get(routes.updatePlayer(player)), (error) =>
     String(error),
   ).map((response) => transformUpdatePlayerResponse(response.data));
+}
+
+/**
+ * Retrieves the match history of a player based on their unique identifier (UID) or username. It allows filtering by season, skip value, and game mode.
+ *
+ * @export
+ * @async
+ * @param {Client} client
+ * @param {string} uid Player unique identifier (UID) or username.
+ * @param {?number} [season] The season to retrieve match history for. Defaults to current season
+ * @param {?number} [skip] The number of matches to skip (pagination). Defaults to 20.
+ * @param {?number} [gameMode] The game mode to filter matches by. Defaults to 0.
+ * @param {?number} [timestamp] Filter matches by timestamp. Only includes matches after the given timestamp.
+ * @returns {Promise<Result<PlayerMatchHistoryEntry[], string>>}
+ */
+export async function getPlayerMatchHistory(
+  client: Client,
+  uid: string,
+  season?: number,
+  skip?: number,
+  gameMode?: number,
+  timestamp?: number,
+): Promise<Result<PlayerMatchHistoryEntry[], string>> {
+  return fromPromise(
+    client.get(
+      routes.getPlayerMatchHistory(uid, season, skip, gameMode, timestamp),
+    ),
+    (error) => String(error),
+  ).map((response) => transformPlayerMatchHistoryResponse(response.data));
 }

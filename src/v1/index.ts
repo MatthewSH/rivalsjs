@@ -64,6 +64,27 @@ export const routes = {
 
     return `/v1/player/${encodeURIComponent(player)}/update`;
   },
+
+  getPlayerMatchHistory(
+    uid: string,
+    season?: number,
+    skip?: number,
+    gameMode?: number,
+    timestamp?: number,
+  ) {
+    if (!uid) {
+      throw new Error("Player UID is required");
+    }
+
+    const url = `/v1/player/${encodeURIComponent(uid)}/match-history`;
+
+    return buildQueryString(url, {
+      season: season ?? undefined,
+      skip: skip ?? undefined,
+      game_mode: gameMode ?? undefined,
+      timestamp: timestamp ?? undefined,
+    });
+  },
 };
 
 export * from "./api";
