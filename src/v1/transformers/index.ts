@@ -9,3 +9,4 @@ export function transformHealthCheckResponse(
 export * from "./achievements";
 export * from "./battlepass";
 export * from "./maps";
+export * from "./player";

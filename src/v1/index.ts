@@ -1,4 +1,3 @@
-import { all } from "axios";
 import { buildQueryString } from "../utils";
 
 export const routes = {
@@ -39,6 +38,14 @@ export const routes = {
       limit: perPage > 0 ? perPage : 10,
     });
   },
+
+  findPlayer(username: string) {
+    if (!username) {
+      throw new Error("Username is required");
+    }
+
+    return `/v1/find-player/${encodeURIComponent(username)}`;
+  },
 };
 
-export * from "./routes";
+export * from "./api";
