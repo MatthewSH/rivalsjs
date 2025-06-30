@@ -61,6 +61,13 @@ function buildAxios(config: ClientConfig) {
   client.interceptors.response.use(
     (response) => {
       const rateLimitRemaining = response.headers["x-ratelimit-remaining"];
+
+      // TODO: Find a better way to handle the healthcheck endpoint
+      if (!rateLimitRemaining) {
+        // This is a fallback for when the header is not present assuming it's the healthcheck endpoint
+        return response;
+      }
+
       logger.debug(
         "Received %d response from %s %s",
         response.status,
