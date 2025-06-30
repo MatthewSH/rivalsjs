@@ -1,6 +1,10 @@
 import { BASE_ASSET_PREMIUM_URL, BASE_ASSET_URL } from "./constants";
 
 export function convertToAssetUrl(input: string): string {
+  if (!input) {
+    return null;
+  }
+
   let parts: string[] = input.split("/");
   parts = parts.filter((part) => part !== "");
 
