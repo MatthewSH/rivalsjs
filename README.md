@@ -3,6 +3,12 @@ Rivals JS
 </h1>
 
 <p align="center">
+<img alt="NPM License" src="https://img.shields.io/npm/l/rivalsjs">
+<img alt="NPM Version" src="https://img.shields.io/npm/v/rivalsjs">
+<img alt="NPM Downloads" src="https://img.shields.io/npm/dm/rivalsjs">
+</p>
+
+<p align="center">
 A modern, lightweight, functional, fully typed, and treeshakeable library for interacting with the unofficial <a href="https://marvelrivalsapi.com/" target="_blank">Marvel Rivals API</a>.
 </p>
 
