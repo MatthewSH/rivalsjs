@@ -12,28 +12,30 @@ permissions:
   pull-requests: write
 
 jobs:
-  release:
+  release-please:
     runs-on: ubuntu-latest
     steps:
+      # Changelog & PR
       - uses: google-github-actions/release-please-action@v4
         id: release
         with:
           release-type: node
           token: ${{ secrets.RELEASE_PLEASE_PAT }}
 
-  publish:
-    if: ${{ needs.release.outputs.release_created }}
-    needs: release
-    runs-on: ubuntu-latest
-    steps:
+      # Publish steps
       - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
+        if: ${{ steps.release.outputs.release_created }}
+      - uses: actions/setup-node@v4
+        if: ${{ steps.release.outputs.release_created }}
         with:
           node-version: 24
       - uses: pnpm/action-setup@v4
+        if: ${{ steps.release.outputs.release_created }}
       - run: pnpm install --frozen-lockfile
+        if: ${{ steps.release.outputs.release_created }}
       - run: pnpm run build
+        if: ${{ steps.release.outputs.release_created }}
       - run: pnpm publish --access public
+        if: ${{ steps.release.outputs.release_created }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
