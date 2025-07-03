@@ -22,7 +22,7 @@ jobs:
           token: ${{ secrets.RELEASE_PLEASE_PAT }}
 
   publish:
-    if: ${{ steps.release.outputs.release_created }}
+    if: ${{ needs.release.outputs.release_created }}
     needs: release
     runs-on: ubuntu-latest
     steps:
