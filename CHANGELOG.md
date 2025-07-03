@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/MatthewSH/rivalsjs/compare/v1.0.1...v1.0.2) (2025-07-03)
+
+
+### Bug Fixes
+
+* point to correct repo ([d2eebf5](https://github.com/MatthewSH/rivalsjs/commit/d2eebf56502e3e25ef91a7eaf4a24a1a2d5ac5ac))
+
 ## [1.0.1](https://github.com/MatthewSH/rivalsjs/compare/v1.0.0...v1.0.1) (2025-07-03)
 
 
