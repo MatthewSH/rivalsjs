@@ -7,6 +7,15 @@ import {
   transformPlayerResponse,
 } from "v2/transformers";
 
+/**
+ * Player data for a specific player identified by uid or username. It processes player statistics and related data, such as match history, rank history, heroes, and maps.
+ *
+ * @export
+ * @async
+ * @param {Client} client
+ * @param {number} uid
+ * @returns {Promise<Result<PlayerResponse, string>>}
+ */
 export async function getPlayer(
   client: Client,
   uid: number,
@@ -16,6 +25,19 @@ export async function getPlayer(
   ).map((response) => transformPlayerResponse(response.data));
 }
 
+/**
+ * Retrieves the match history of a player based on their unique identifier (UID) or username. It allows filtering by season, skip value, and game mode.
+ *
+ * @export
+ * @async
+ * @param {Client} client
+ * @param {number} uid
+ * @param {?number} [page]
+ * @param {?number} [limit]
+ * @param {?number} [gameMode]
+ * @param {?number} [timestamp]
+ * @returns {Promise<Result<PlayerMatchHistoryResponse, string>>}
+ */
 export async function getPlayerMatchHistory(
   client: Client,
   uid: number,

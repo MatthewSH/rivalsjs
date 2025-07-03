@@ -7,6 +7,13 @@ import type { ClientConfig } from "./types";
 
 export type Client = ReturnType<typeof buildAxios>;
 
+/**
+ * Create an Axios client to be used with RivalsJS.
+ *
+ * @export
+ * @param {ClientConfig} config
+ * @returns {Client}
+ */
 export function createRivalsClient(config: ClientConfig): Client {
   if (!config.apiKey) {
     throw new Error("API key is required to create a client.");
