@@ -2,7 +2,16 @@
   "name": "rivalsjs",
   "version": "1.0.2",
   "description": "",
-  "keywords": [],
+  "keywords": [
+    "marvel",
+    "rivals",
+    "api",
+    "marvel rivals",
+    "marvel rivals api",
+    "marvelrivals",
+    "video game api",
+    "game api"
+  ],
   "license": "MIT",
   "files": [
     "dist/",
