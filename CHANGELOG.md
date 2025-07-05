@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.3](https://github.com/MatthewSH/rivalsjs/compare/v1.0.2...v1.0.3) (2025-07-05)
+
+
+### Bug Fixes
+
+* comments and typings ([e3adace](https://github.com/MatthewSH/rivalsjs/commit/e3adace6502e83127927e5fdf131813943aa291f))
+* **skip-ci:** another releaseplease change ([bbc875e](https://github.com/MatthewSH/rivalsjs/commit/bbc875e05def9a16392c03c741ab4023babea9c3))
+* **skip-ci:** npm publish ([a35d76f](https://github.com/MatthewSH/rivalsjs/commit/a35d76f9d5676203d1eef14e69a7a139cd21b807))
+
 ## [1.0.2](https://github.com/MatthewSH/rivalsjs/compare/v1.0.1...v1.0.2) (2025-07-03)
 
 
