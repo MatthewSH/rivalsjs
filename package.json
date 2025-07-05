@@ -21,24 +21,24 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     },
     "./v1": {
-      "types": "./dist/types/v1/index.d.ts",
+      "types": "./dist/v1/index.d.ts",
       "import": "./dist/v1/index.mjs",
       "require": "./dist/v1/index.cjs"
     },
     "./v2": {
-      "types": "./dist/types/v2/index.d.ts",
+      "types": "./dist/v2/index.d.ts",
       "import": "./dist/v2/index.mjs",
       "require": "./dist/v2/index.cjs"
     },
     "./package.json": "./package.json"
   },
   "scripts": {
-    "build": "pkgroll --clean-dist --env.__PACKAGE_VERSION__=$npm_package_version",
+    "build": "pkgroll --clean-dist --sourcemap --env.__PACKAGE_VERSION__=$npm_package_version",
     "docs:api": "typedoc",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
