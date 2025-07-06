@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/MatthewSH/rivalsjs/compare/v1.0.3...v1.0.4) (2025-07-06)
+
+
+### Bug Fixes
+
+* provenance generation ([ad76cf2](https://github.com/MatthewSH/rivalsjs/commit/ad76cf27f03ef1eed77038f966dc3249bec8d9b8))
+
 ## [1.0.3](https://github.com/MatthewSH/rivalsjs/compare/v1.0.2...v1.0.3) (2025-07-05)
 
 
