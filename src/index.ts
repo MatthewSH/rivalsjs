@@ -85,7 +85,7 @@ function buildAxios(config: ClientConfig) {
       logger.debug("Rate limit remaining: %s", rateLimitRemaining);
 
       if (
-        rateLimitRemaining !== "cache" &&
+        String(rateLimitRemaining).toLowerCase() !== "cache" &&
         Number.isNaN(Number(rateLimitRemaining))
       ) {
         logger.error("Invalid rate limit header: %s", rateLimitRemaining);
