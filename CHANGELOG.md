@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/MatthewSH/rivalsjs/compare/v1.0.4...v1.1.0) (2025-07-07)
+
+
+### Features
+
+* add single match route ([54261e4](https://github.com/MatthewSH/rivalsjs/commit/54261e4a20e049cef682cbbf86e202b3cc6f0b18))
+
+
+### Bug Fixes
+
+* support alternative cache header ([cef4a7e](https://github.com/MatthewSH/rivalsjs/commit/cef4a7e0535fea29c9f69ec0fac62b53584bc429))
+
 ## [1.0.4](https://github.com/MatthewSH/rivalsjs/compare/v1.0.3...v1.0.4) (2025-07-06)
 
 
