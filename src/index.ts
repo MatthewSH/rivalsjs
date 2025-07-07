@@ -29,6 +29,16 @@ export function createRivalsClient(config: ClientConfig): Client {
     config.retryOnRateLimit = false;
   }
 
+  if (
+    config.verifyRateLimitHeader === undefined ||
+    config.verifyRateLimitHeader === null
+  ) {
+    logger.warn(
+      "`verifyRateLimitHeader` is not set. Defaulting to `true`. Bad cache headers will throw error.",
+    );
+    config.verifyRateLimitHeader = true;
+  }
+
   const client = buildAxios(config);
 
   return client;
@@ -84,13 +94,15 @@ function buildAxios(config: ClientConfig) {
 
       logger.debug("Rate limit remaining: %s", rateLimitRemaining);
 
-      if (
-        String(rateLimitRemaining).toLowerCase() !== "cache" &&
-        Number.isNaN(Number(rateLimitRemaining))
-      ) {
-        logger.error("Invalid rate limit header: %s", rateLimitRemaining);
+      if (config.verifyRateLimitHeader) {
+        if (
+          String(rateLimitRemaining).toLowerCase() !== "cache" &&
+          Number.isNaN(Number(rateLimitRemaining))
+        ) {
+          logger.error("Invalid rate limit header: %s", rateLimitRemaining);
 
-        return Promise.reject("Invalid rate limit header");
+          return Promise.reject("Invalid rate limit header");
+        }
       }
 
       return response;
