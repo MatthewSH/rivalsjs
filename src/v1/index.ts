@@ -97,6 +97,10 @@ export const routes = {
   heroLeaderboard(name: string) {
     return `/v1/heroes/leaderboard/${encodeURIComponent(name)}`;
   },
+
+  singleMatch(matchId: string) {
+    return `/v1/match/${encodeURIComponent(matchId)}`;
+  },
 };
 
 export * from "./api";

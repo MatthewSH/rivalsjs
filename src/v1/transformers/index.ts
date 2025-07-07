@@ -10,4 +10,5 @@ export * from "./achievements";
 export * from "./battlepass";
 export * from "./heroes";
 export * from "./maps";
+export * from "./match";
 export * from "./player";
