@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/MatthewSH/rivalsjs/compare/v1.1.0...v1.2.0) (2025-07-07)
+
+
+### Features
+
+* allow disabling of rate limit header verification ([17a9ccf](https://github.com/MatthewSH/rivalsjs/commit/17a9ccfc11031fda209746ebbe34c926f19d6518))
+
 ## [1.1.0](https://github.com/MatthewSH/rivalsjs/compare/v1.0.4...v1.1.0) (2025-07-07)
 
 
