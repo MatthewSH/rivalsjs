@@ -54,6 +54,8 @@ yarn add rivalsjs     # or
 bun add rivalsjs
 ```
 
+If you're local Node environment is development you will also need to install `pino-pretty`.
+
 # ⚡ Jumping In
 ## Creating the client
 RivalsJS is designed to be thin, flexible, and functional. We've created a helper function that handles the ground work you need and you pass that Axios client to each function. No blackbox magic here.
