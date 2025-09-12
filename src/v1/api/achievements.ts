@@ -1,11 +1,11 @@
 import type { Client } from "index";
 import { fromPromise, type Result } from "neverthrow";
 import type { AchievementResponse, AllAchievementsResponse } from "types/v1";
-import { routes } from "v1";
 import {
   transformAchievementResponse,
   transformAllAchievementsResponse,
 } from "v1/transformers";
+import { routes } from "../routes";
 
 /**
  * Retrieves a list of achievements. You can apply pagination.

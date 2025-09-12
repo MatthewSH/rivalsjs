@@ -1,8 +1,8 @@
 import type { Client } from "index";
 import { fromPromise, type Result } from "neverthrow";
 import type { HealthCheckResponse } from "types/v1";
-import { routes } from "v1";
 import { transformHealthCheckResponse } from "v1/transformers";
+import { routes } from "../routes";
 
 /**
  * API health check.

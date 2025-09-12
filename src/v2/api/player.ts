@@ -1,11 +1,11 @@
 import type { Client } from "index";
 import { fromPromise, type Result } from "neverthrow";
 import type { PlayerMatchHistoryResponse, PlayerResponse } from "types/v2";
-import { routes } from "v2";
 import {
   transformPlayerMatchHistoryResponse,
   transformPlayerResponse,
 } from "v2/transformers";
+import { routes } from "../routes";
 
 /**
  * Player data for a specific player identified by uid or username. It processes player statistics and related data, such as match history, rank history, heroes, and maps.

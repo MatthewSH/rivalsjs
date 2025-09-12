@@ -1,12 +1,12 @@
 import type { Client } from "index";
 import { fromPromise, type Result } from "neverthrow";
 import type { Hero, HeroLeaderboardResponse } from "types/v1";
-import { routes } from "v1";
 import {
   transformAllHeroesResponse,
   transformHeroLeaderboardResponse,
   transformHeroResponse,
 } from "v1/transformers";
+import { routes } from "../routes";
 
 /**
  * Retrieves a list of all available heroes with their details.
