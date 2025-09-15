@@ -1,8 +1,8 @@
 import type { Client } from "index";
 import { fromPromise, type Result } from "neverthrow";
 import type { BattlepassResponse } from "types/v1";
-import { routes } from "v1";
 import { transformBattlepassResponse } from "v1/transformers";
+import { routes } from "../routes";
 
 /**
  * Retrieves the battlepass data for a given season, including season details

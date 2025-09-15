@@ -1,8 +1,8 @@
 import type { Client } from "index";
 import { fromPromise, type Result } from "neverthrow";
 import type { AllMapsResponse } from "types/v1";
-import { routes } from "v1";
 import { transformAllMapsResponse } from "v1/transformers";
+import { routes } from "../routes";
 
 /**
  * Retrieves all available maps with optional pagination to control the number of results per page.

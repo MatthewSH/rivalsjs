@@ -23,17 +23,17 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.mjs"
     },
     "./v1": {
       "types": "./dist/v1/index.d.ts",
       "import": "./dist/v1/index.mjs",
-      "require": "./dist/v1/index.cjs"
+      "require": "./dist/v1/index.mjs"
     },
     "./v2": {
       "types": "./dist/v2/index.d.ts",
       "import": "./dist/v2/index.mjs",
-      "require": "./dist/v2/index.cjs"
+      "require": "./dist/v2/index.mjs"
     },
     "./package.json": "./package.json"
   },
@@ -67,7 +67,7 @@
   "dependencies": {
     "axios": "^1.11.0",
     "axios-retry": "^4.5.0",
-    "camelcase-keys": "^9.1.3",
+    "camelcase-keys": "^10.0.0",
     "neverthrow": "^8.2.0",
     "pino": "^9.7.0"
   },
@@ -78,7 +78,7 @@
     "@types/node": "^24.1.0",
     "lefthook": "^1.12.2",
     "pino-pretty": "^13.0.0",
-    "pkgroll": "^2.14.5",
+    "pkgroll": "^2.15.4",
     "tsx": "^4.20.3",
     "typedoc": "^0.28.8",
     "typedoc-plugin-markdown": "^4.7.1",

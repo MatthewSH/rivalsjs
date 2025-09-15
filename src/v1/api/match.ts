@@ -1,7 +1,7 @@
 import type { Client } from "index";
 import { fromPromise } from "neverthrow";
-import { routes } from "v1";
 import { transformMatchResponse } from "v1/transformers";
+import { routes } from "../routes";
 
 /**
  * Retrieve match data for a specific match identified by the matchId. It processes the match details and player stats.

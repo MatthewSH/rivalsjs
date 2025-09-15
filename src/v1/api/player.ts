@@ -6,13 +6,13 @@ import type {
   PlayerResponse,
   UpdatePlayerResponse,
 } from "types/v1";
-import { routes } from "v1";
 import {
   transformFindPlayerResponse,
   transformGetPlayerResponse,
   transformPlayerMatchHistoryResponse,
   transformUpdatePlayerResponse,
 } from "v1/transformers";
+import { routes } from "../routes";
 
 /**
  * Retrieves player uid for a specific player identified by their username. It returns basic player information such as name and unique identifier (UID).
